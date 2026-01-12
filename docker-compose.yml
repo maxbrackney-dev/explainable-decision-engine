@@ -1,0 +1,20 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ARTIFACTS_DIR=artifacts/latest
+      - MODEL_VERSION=latest
+      - REDIS_URL=redis://redis:6379/0
+      - RATE_LIMIT_RPM=120
+      - BATCH_MAX_ROWS=250
+    depends_on:
+      - redis
+    volumes:
+      - ./artifacts:/app/artifacts
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"

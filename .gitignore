@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+
+# Artifacts
+artifacts/
+!artifacts/.gitkeep
+
+# Logs
+*.log
+
+# Build
+build/
+dist/
+*.egg-info/
+cpp/build/
+*.so
+*.dylib
+*.dll
+
+# OS
+.DS_Store

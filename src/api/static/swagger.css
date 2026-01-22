@@ -1,0 +1,154 @@
+/* Modern dark-ish, fintech-ish Swagger UI theme */
+
+html, body {
+  background: #0b1220 !important;
+}
+
+.swagger-ui {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .topbar {
+  background: #0b1220 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+.swagger-ui .topbar .download-url-wrapper input[type="text"] {
+  background: rgba(255,255,255,0.06) !important;
+  color: #e5e7eb !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 12px !important;
+}
+
+.swagger-ui .topbar .download-url-wrapper .download-url-button {
+  background: #2563eb !important;
+  border-radius: 12px !important;
+  border: none !important;
+  color: #fff !important;
+}
+
+.swagger-ui .info {
+  margin: 28px 0 !important;
+}
+
+.swagger-ui .info .title {
+  color: #e5e7eb !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.swagger-ui .scheme-container {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+
+.swagger-ui .opblock {
+  border-radius: 16px !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: none !important;
+}
+
+.swagger-ui .opblock .opblock-summary {
+  border-radius: 16px !important;
+}
+
+.swagger-ui .opblock-summary-method {
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.swagger-ui .opblock.opblock-get {
+  background: rgba(59,130,246,0.08) !important;
+}
+.swagger-ui .opblock.opblock-post {
+  background: rgba(16,185,129,0.08) !important;
+}
+
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+  background: #3b82f6 !important;
+}
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+  background: #10b981 !important;
+}
+
+.swagger-ui .opblock .opblock-summary-description,
+.swagger-ui .opblock .opblock-summary-path,
+.swagger-ui .opblock .opblock-summary-path__deprecated {
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .btn {
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  background: rgba(255,255,255,0.06) !important;
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .btn.execute {
+  background: #2563eb !important;
+  border: none !important;
+  color: #fff !important;
+}
+
+.swagger-ui input,
+.swagger-ui textarea,
+.swagger-ui select {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 12px !important;
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .responses-wrapper,
+.swagger-ui .opblock-body {
+  background: transparent !important;
+}
+
+.swagger-ui .model-box,
+.swagger-ui section.models {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 16px !important;
+}
+
+.swagger-ui .model-title {
+  color: #e5e7eb !important;
+}
+
+.swagger-ui a {
+  color: #93c5fd !important;
+}
+
+.swagger-ui .markdown p,
+.swagger-ui .markdown li,
+.swagger-ui .markdown h1,
+.swagger-ui .markdown h2,
+.swagger-ui .markdown h3,
+.swagger-ui .markdown h4 {
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .opblock-description-wrapper p {
+  color: rgba(229,231,235,0.88) !important;
+}
+
+.swagger-ui .tab li {
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .tab li.active {
+  border-bottom: 2px solid #2563eb !important;
+}
+
+.swagger-ui .response-col_status {
+  color: #e5e7eb !important;
+}
+
+.swagger-ui .hljs {
+  background: rgba(255,255,255,0.06) !important;
+  border-radius: 12px !important;
+}

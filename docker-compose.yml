@@ -7,8 +7,15 @@ services:
       - ARTIFACTS_DIR=artifacts/latest
       - MODEL_VERSION=latest
       - REDIS_URL=redis://redis:6379/0
-      - RATE_LIMIT_RPM=120
-      - BATCH_MAX_ROWS=250
+      - DEMO_API_KEY=demo_key
+      - DEFAULT_RPM=60
+      - DRIFT_Z_THRESHOLD=3.5
+      - RISK_EVENT_DEFINITION=chargeback_within_180d
+      - LOSS_PER_EVENT_USD=180
+      - LOSS_AMT_MULTIPLIER=0.15
+      - STEPUP_THRESHOLD=0.35
+      - REVIEW_THRESHOLD=0.55
+      - DECLINE_THRESHOLD=0.80
     depends_on:
       - redis
     volumes:

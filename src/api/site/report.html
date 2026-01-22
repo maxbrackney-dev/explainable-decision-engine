@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Decision Report</title>
+  <link rel="stylesheet" href="/static/v3.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body class="print">
+  <main class="container wide">
+    <div class="panel">
+      <div class="panel-h">
+        <div class="panel-title">Decision Report</div>
+        <div class="panel-sub">Print → Save as PDF (client-side)</div>
+      </div>
+      <div class="panel-b">
+        <div class="row gap">
+          <a class="btn ghost" href="/app">← Back</a>
+          <button class="btn primary" id="btnPrint">Download PDF</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid3">
+          <div class="panel"><div class="panel-h"><div class="panel-title">Probability</div></div><div class="panel-b"><div id="pProb" class="big">—</div></div></div>
+          <div class="panel"><div class="panel-h"><div class="panel-title">Label</div></div><div class="panel-b"><div id="pLabel" class="big">—</div></div></div>
+          <div class="panel"><div class="panel-h"><div class="panel-title">Model Version</div></div><div class="panel-b"><div id="pVer" class="big">—</div></div></div>
+        </div>
+
+        <div class="section-title">Warnings</div>
+        <div id="pWarn" class="pillbox"><span class="pill ok">No warnings</span></div>
+
+        <div class="section-title">Input</div>
+        <pre id="pInput" class="code">—</pre>
+
+        <div class="section-title">Top Features</div>
+        <div id="pTop" class="list">—</div>
+
+        <div class="section-title">Raw</div>
+        <pre id="pRaw" class="code">—</pre>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/v3_shared.js"></script>
+  <script src="/static/v3_report.js"></script>
+</body>
+</html>

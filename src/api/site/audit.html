@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Audit • Decision Engine</title>
+  <link rel="stylesheet" href="/static/v3.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="brand-title">Audit Log</div>
+        <div class="brand-sub">Local request history • CSV export</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn ghost" data-theme-toggle>Theme</button>
+      <a class="btn ghost" href="/app">Portal</a>
+      <a class="btn ghost" href="/metrics">Metrics</a>
+      <button id="btnExport" class="btn primary">Export CSV</button>
+      <button id="btnClear" class="btn danger">Clear</button>
+    </div>
+  </header>
+
+  <main class="container wide">
+    <div class="panel">
+      <div class="panel-h">
+        <div class="panel-title">Audit Table</div>
+        <div class="panel-sub">Stored in localStorage for demo-only auditability</div>
+      </div>
+      <div class="panel-b">
+        <div class="row gap">
+          <input id="filter" class="input" placeholder="Filter: high_risk, warning, merchant_risk_score..." />
+          <select id="labelFilter" class="input">
+            <option value="">All labels</option>
+            <option value="high_risk">high_risk</option>
+            <option value="low_risk">low_risk</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table" id="table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Env</th>
+                <th>Label</th>
+                <th>Prob</th>
+                <th>Warnings</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr><td colspan="6" class="muted">No requests yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="muted small" style="margin-top:10px">
+          Tip: Click “Load” to restore a record back in the portal.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/v3_shared.js"></script>
+  <script src="/static/v3_audit.js"></script>
+</body>
+</html>

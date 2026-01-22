@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Explainable Decision Engine</title>
+  <link rel="stylesheet" href="/static/v3.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="bg"></div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="brand-title">Explainable Decision Engine</div>
+        <div class="brand-sub">V3 Demo Portal • Risk Scoring + Explainability</div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" data-theme-toggle>Theme</button>
+      <a class="btn ghost" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+      <a class="btn ghost" href="/v1/health" target="_blank" rel="noreferrer">Health</a>
+      <a class="btn primary" href="/login">Open Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Customer-friendly demo UI for a fintech-style decision service.</h1>
+        <p class="muted">
+          Score synthetic tabular inputs, view calibrated probabilities, generate SHAP explanations,
+          review audit trails, and export printable decision reports. No real banking data is used.
+        </p>
+        <div class="row gap">
+          <a class="btn primary" href="/login">Launch Portal</a>
+          <a class="btn ghost" href="/docs" target="_blank" rel="noreferrer">Developer Swagger</a>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="card-title">Decisioning</div>
+            <div class="card-body">Risk score + label + warnings with strict schema validation.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Explainability</div>
+            <div class="card-body">Local SHAP per decision + global feature importance dashboard.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Auditability</div>
+            <div class="card-body">Timeline + audit table + CSV export + PDF report.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel glow">
+        <div class="panel-h">
+          <div class="panel-title">Quick Links</div>
+          <div class="panel-sub">Where everything lives</div>
+        </div>
+        <div class="panel-b">
+          <div class="kv"><div class="k">Login</div><div class="v"><a href="/login">/login</a></div></div>
+          <div class="kv"><div class="k">Portal</div><div class="v"><a href="/app">/app</a></div></div>
+          <div class="kv"><div class="k">Audit</div><div class="v"><a href="/audit">/audit</a></div></div>
+          <div class="kv"><div class="k">Metrics</div><div class="v"><a href="/metrics">/metrics</a></div></div>
+          <div class="kv"><div class="k">OpenAPI</div><div class="v"><a href="/openapi.json">/openapi.json</a></div></div>
+        </div>
+        <div class="panel-f">
+          <span class="pill ok">Synthetic Only</span>
+          <span class="pill">Portfolio Demo</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Explainable Decision Engine • V3 UI</div>
+      <div class="muted">Not for real-world eligibility decisions</div>
+    </footer>
+  </main>
+
+  <script src="/static/v3_shared.js"></script>
+</body>
+</html>

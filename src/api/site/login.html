@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Login • Decision Portal</title>
+  <link rel="stylesheet" href="/static/v3.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="bg"></div>
+  <main class="center">
+    <div class="auth-card">
+      <div class="brand mini">
+        <div class="dot"></div>
+        <div>
+          <div class="brand-title">Decision Portal</div>
+          <div class="brand-sub">Demo Auth • LocalStorage Session</div>
+        </div>
+      </div>
+
+      <div class="muted small" style="margin-top:10px">
+        This is demo-only. No real authentication. Login stores a local flag to simulate a protected portal.
+      </div>
+
+      <div class="form">
+        <div class="field">
+          <label>Email</label>
+          <input id="email" placeholder="analyst@bank.dev" autocomplete="off"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input id="pw" type="password" placeholder="••••••••" autocomplete="off"/>
+        </div>
+
+        <div class="row gap">
+          <button id="btnLogin" class="btn primary" style="flex:1">Sign in</button>
+          <a class="btn ghost" href="/" style="flex:1; text-align:center">Cancel</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="row gap">
+          <button class="btn ghost" data-theme-toggle style="flex:1">Theme</button>
+          <a class="btn ghost" href="/docs" target="_blank" rel="noreferrer" style="flex:1; text-align:center">API Docs</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/v3_shared.js"></script>
+  <script src="/static/v3_login.js"></script>
+</body>
+</html>

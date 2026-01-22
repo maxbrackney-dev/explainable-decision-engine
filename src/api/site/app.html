@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Portal • Decision Engine</title>
+  <link rel="stylesheet" href="/static/v3.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="brand-title">Decision Portal</div>
+        <div class="brand-sub">Score • Explain • Report • Audit</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn ghost" data-theme-toggle>Theme</button>
+      <a class="btn ghost" href="/metrics">Metrics</a>
+      <a class="btn ghost" href="/audit">Audit</a>
+      <a class="btn ghost" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+      <button id="btnLogout" class="btn danger">Logout</button>
+    </div>
+  </header>
+
+  <main class="container wide">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-title">Session</div>
+        <div class="field">
+          <label>Environment</label>
+          <select id="env">
+            <option value="dev">Dev</option>
+            <option value="stage">Stage</option>
+            <option value="prod">Prod</option>
+          </select>
+          <div class="hint">UI-only selector (change base URLs later if desired)</div>
+        </div>
+
+        <div class="field">
+          <label>API Key (demo)</label>
+          <input id="apiKey" type="password" placeholder="sk_demo_••••••••"/>
+          <div class="hint">Sent as X-API-Key header (not enforced)</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="side-title">Load Sample</div>
+        <div class="row gap">
+          <button class="btn ghost" id="seedLow">Low Risk</button>
+          <button class="btn ghost" id="seedHigh">High Risk</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="side-title">Request History</div>
+        <div class="row gap">
+          <button class="btn ghost" id="clearHistory">Clear</button>
+          <a class="btn ghost" href="/audit">Audit Table</a>
+        </div>
+        <div id="timeline" class="timeline">No requests yet.</div>
+      </aside>
+
+      <section class="content">
+        <div class="panel">
+          <div class="panel-h">
+            <div class="panel-title">Risk Input</div>
+            <div class="panel-sub">Strict schema validation + typed request model</div>
+          </div>
+          <div class="panel-b">
+            <form id="form" class="grid2">
+              <div class="field"><label>age</label><input name="age" type="number" min="13" max="100" step="1" required></div>
+              <div class="field"><label>income</label><input name="income" type="number" min="0" step="100" required></div>
+              <div class="field"><label>account_age_days</label><input name="account_age_days" type="number" min="0" step="1" required></div>
+              <div class="field"><label>num_txn_30d</label><input name="num_txn_30d" type="number" min="0" step="1" required></div>
+              <div class="field"><label>avg_txn_amount_30d</label><input name="avg_txn_amount_30d" type="number" min="0" step="0.01" required></div>
+              <div class="field"><label>num_chargebacks_180d</label><input name="num_chargebacks_180d" type="number" min="0" step="1" required></div>
+              <div class="field"><label>device_change_count_30d</label><input name="device_change_count_30d" type="number" min="0" step="1" required></div>
+              <div class="field"><label>geo_distance_from_last_txn_km</label><input name="geo_distance_from_last_txn_km" type="number" min="0" step="0.1" required></div>
+              <div class="field"><label>is_international</label><select name="is_international"><option value="false" selected>false</option><option value="true">true</option></select></div>
+              <div class="field"><label>merchant_risk_score</label><input name="merchant_risk_score" type="number" min="0" max="1" step="0.01" required></div>
+            </form>
+
+            <div class="row gap" style="margin-top:12px">
+              <button id="btnScore" class="btn ghost">Score</button>
+              <button id="btnExplain" class="btn primary">Score + Explain</button>
+              <button id="btnGlobal" class="btn ghost">Global Explain</button>
+              <button id="btnReport" class="btn primary">PDF Report</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel glow" style="margin-top:14px">
+          <div class="panel-h">
+            <div class="panel-title">Decision Output</div>
+            <div class="panel-sub">Probability, label, warnings, and explainability</div>
+          </div>
+
+          <div class="panel-b">
+            <div class="kpis">
+              <div class="kpi"><div class="kpi-k">Risk Probability</div><div class="kpi-v" id="kProb">—</div></div>
+              <div class="kpi"><div class="kpi-k">Risk Label</div><div class="kpi-v" id="kLabel">—</div></div>
+              <div class="kpi"><div class="kpi-k">Model Version</div><div class="kpi-v" id="kVer">—</div></div>
+            </div>
+
+            <div class="split">
+              <div>
+                <div class="section-title">Warnings</div>
+                <div id="warnings" class="pillbox"><span class="pill ok">No warnings</span></div>
+              </div>
+
+              <div>
+                <div class="section-title">Top Features</div>
+                <div id="topFeatures" class="list muted">Run “Score + Explain”</div>
+              </div>
+            </div>
+
+            <div class="section-title">Global Feature Importance</div>
+            <div class="chart"><canvas id="globalChart" height="160"></canvas></div>
+
+            <div class="section-title">Raw Response</div>
+            <pre id="raw" class="code">—</pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/static/v3_shared.js"></script>
+  <script src="/static/v3_portal.js"></script>
+</body>
+</html>

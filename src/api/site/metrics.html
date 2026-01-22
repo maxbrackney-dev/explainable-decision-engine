@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Metrics • Decision Engine</title>
+  <link rel="stylesheet" href="/static/v3.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="brand-title">Model Metrics</div>
+        <div class="brand-sub">AUC • Brier • Thresholds • Global feature importance</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn ghost" data-theme-toggle>Theme</button>
+      <a class="btn ghost" href="/app">Portal</a>
+      <a class="btn ghost" href="/audit">Audit</a>
+      <a class="btn ghost" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+      <button id="btnRefresh" class="btn primary">Refresh</button>
+      <button id="btnLogout" class="btn danger">Logout</button>
+    </div>
+  </header>
+
+  <main class="container wide">
+    <div class="panel" style="margin-bottom:14px">
+      <div class="panel-h">
+        <div class="panel-title">Connection</div>
+        <div class="panel-sub">Set API key + environment to unlock protected /v1 endpoints</div>
+      </div>
+      <div class="panel-b">
+        <div class="row gap">
+          <div class="field" style="min-width:240px;flex:1">
+            <label>Environment</label>
+            <select id="env">
+              <option value="dev">Dev</option>
+              <option value="stage">Stage</option>
+              <option value="prod">Prod</option>
+            </select>
+            <div class="hint">UI-only selector; base URL stays same unless you wire it later.</div>
+          </div>
+
+          <div class="field" style="min-width:320px;flex:2">
+            <label>API Key</label>
+            <input id="apiKey" type="password" placeholder="demo_key" />
+            <div class="hint">Required for /v1/* endpoints. Stored in localStorage.</div>
+          </div>
+
+          <div class="field" style="min-width:180px">
+            <label>&nbsp;</label>
+            <button id="btnSaveKey" class="btn primary" style="width:100%">Save Key</button>
+            <div class="hint" id="keyStatus">Not connected</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="muted small">
+          If you see 401 errors below, set your API key to <span class="mono">demo_key</span> (or whatever you configured as <span class="mono">DEMO_API_KEY</span>).
+        </div>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="panel">
+        <div class="panel-h">
+          <div class="panel-title">Model</div>
+          <div class="panel-sub">Type + version</div>
+        </div>
+        <div class="panel-b">
+          <div id="mModel" class="big">—</div>
+          <div class="muted small" id="mVersion">—</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h">
+          <div class="panel-title">AUC</div>
+          <div class="panel-sub">Test AUC</div>
+        </div>
+        <div class="panel-b">
+          <div id="mAuc" class="big">—</div>
+          <div class="muted small">Higher is better</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h">
+          <div class="panel-title">Brier</div>
+          <div class="panel-sub">Calibration</div>
+        </div>
+        <div class="panel-b">
+          <div id="mBrier" class="big">—</div>
+          <div class="muted small">Lower is better</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel glow" style="margin-top:14px">
+      <div class="panel-h">
+        <div class="panel-title">Global Feature Importance</div>
+        <div class="panel-sub">Mean absolute SHAP contributions (top 10)</div>
+      </div>
+      <div class="panel-b">
+        <div class="chart"><canvas id="impChart" height="220"></canvas></div>
+        <div id="impList" class="list" style="margin-top:12px"></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:14px">
+      <div class="panel-h">
+        <div class="panel-title">Model Info</div>
+        <div class="panel-sub">Thresholds + limitations + fairness summary</div>
+      </div>
+      <div class="panel-b">
+        <pre id="raw" class="code">—</pre>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/v3_shared.js"></script>
+  <script src="/static/v3_metrics.js"></script>
+</body>
+</html>

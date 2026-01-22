@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import joblib
-
 from src.common.settings import SETTINGS
 from src.common.utils import read_json
 from src.common.logging import get_logger
@@ -21,34 +20,24 @@ class LoadedArtifacts:
     stats_stds: Dict[str, float]
     metrics: Dict[str, Any]
     model_card: str
+    fairness_report: Dict[str, Any]
     artifacts_dir: Path
 
 
 def load_artifacts(artifacts_dir: Optional[Path] = None) -> LoadedArtifacts:
     ad = artifacts_dir or SETTINGS.artifacts_dir
 
-    model_path = ad / SETTINGS.model_filename
-    schema_path = ad / SETTINGS.feature_schema_filename
-    metrics_path = ad / SETTINGS.metrics_filename
-    card_path = ad / SETTINGS.model_card_filename
+    model = joblib.load(ad / SETTINGS.model_filename)
+    schema = read_json(ad / SETTINGS.feature_schema_filename)
+    metrics = read_json(ad / SETTINGS.metrics_filename)
+    model_card = (ad / SETTINGS.model_card_filename).read_text(encoding="utf-8")
 
-    model = joblib.load(model_path)
-    schema = read_json(schema_path)
-    metrics = read_json(metrics_path)
-    model_card = card_path.read_text(encoding="utf-8")
+    fairness_path = ad / SETTINGS.fairness_report_filename
+    fairness = read_json(fairness_path) if fairness_path.exists() else {}
 
     feature_list = schema["features"]
     stats_means = schema["stats"]["means"]
     stats_stds = schema["stats"]["stds"]
 
     logger.info("Artifacts loaded", extra={"ctx": {"artifacts_dir": str(ad), "model_type": metrics.get("model_type")}})
-
-    return LoadedArtifacts(
-        model=model,
-        feature_list=feature_list,
-        stats_means=stats_means,
-        stats_stds=stats_stds,
-        metrics=metrics,
-        model_card=model_card,
-        artifacts_dir=ad,
-    )
+    return LoadedArtifacts(model, feature_list, stats_means, stats_stds, metrics, model_card, fairness, ad)
